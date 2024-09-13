@@ -9,9 +9,9 @@ import java.util.List;
 
 @Repository
 public class MemberRepository {
+
     @PersistenceContext
     EntityManager em;
-
 
     public Long save(Member member) {
         em.persist(member);
