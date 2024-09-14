@@ -2,12 +2,15 @@ package com.example.YoungJu_Lee_Spring.domain;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import static jakarta.persistence.FetchType.LAZY;
 import static jakarta.persistence.GenerationType.IDENTITY;
 
+import java.util.List;
+import java.util.ArrayList;
 
 @Entity
 @Getter
@@ -24,6 +27,11 @@ public class Article {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    // 작성 예정
+    public void setMember(Member member) {
+        this.member = member;
+    }
+
+    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
+    private List<Comment> comments = new ArrayList<>();
 
 }
