@@ -2,6 +2,8 @@ package com.example.YoungJu_Lee_Spring.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -31,4 +33,7 @@ public class Song extends BaseTimeEntity {
     public void setAlbum(Album album) {
         this.album = album;
     }
+
+    @OneToMany(mappedBy = "song", cascade = CascadeType.ALL)
+    private List<Like> likes = new ArrayList<>();
 }

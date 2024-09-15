@@ -8,6 +8,7 @@ import lombok.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
+@Table(name = "likes")
 public class Like extends BaseTimeEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,8 +19,7 @@ public class Like extends BaseTimeEntity{
     @JoinColumn(name = "member_id")
     private Member member;
 
-    public void setMember(Member member) {
-        this.member = member;
-    }
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "song_id")
+    private Song song;
 }
