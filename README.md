@@ -10,6 +10,15 @@
 </details>
 
 <details>
+<summary>week2.JPA-standard</summary>
+<div markdown="1">
+
+  ![스크린샷 2024-09-15 162049](https://github.com/user-attachments/assets/5a4c23ba-2197-4bb6-8e34-25e169a7b152)
+
+</div>
+</details>
+
+<details>
 <summary>week3.Spring-data-JPA-session</summary>
 <div markdown="1">
 
@@ -29,7 +38,6 @@
 ### findByUsernameStartsWith 
 
 ![스크린샷 2024-09-28 22172](https://github.com/user-attachments/assets/71065de2-8a57-492e-99c8-8649318f54ed)
-
 
 </div>
 </details>

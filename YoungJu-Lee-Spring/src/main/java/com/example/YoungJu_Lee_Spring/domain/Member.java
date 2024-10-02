@@ -11,25 +11,31 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
+import jakarta.persistence.*;
+import lombok.*;
+import java.util.List;
+import java.util.ArrayList;
+
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Member {
+@AllArgsConstructor
+@Builder
+public class Member extends BaseTimeEntity {
     @Id
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_id")
     private Long id;
 
-    @Column(nullable = false)
-    private String username;
-    private String email;
-    private int age;
+    private String name;
 
-    @Builder
-    public Member(String username, String email, int age) {
-        this.username = username;
-        this.email = email;
-        this.age = age;
-    }
+    @Column(nullable = false, unique = true)
+    private String email;
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<PlayList> playlists = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<Like> likes = new ArrayList<>();
 }
