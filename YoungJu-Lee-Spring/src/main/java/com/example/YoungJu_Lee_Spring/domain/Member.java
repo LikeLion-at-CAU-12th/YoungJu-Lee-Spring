@@ -28,6 +28,8 @@ public class Member extends BaseTimeEntity {
     @Column(name = "member_id")
     private Long id;
 
+    private Long age;
+
     private String name;
 
     @Column(nullable = false, unique = true)

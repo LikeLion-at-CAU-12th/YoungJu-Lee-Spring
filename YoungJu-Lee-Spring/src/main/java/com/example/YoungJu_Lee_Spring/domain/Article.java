@@ -34,4 +34,11 @@ public class Article {
     @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
     private List<Comment> comments = new ArrayList<>();
 
+    @Builder
+    public Article(String title, String content, Member member, List<Comment> comments) {
+        this.title = title;
+        this.content = content;
+        this.member = member;
+        this.comments = comments != null ? comments : new ArrayList<>();
+    }
 }
