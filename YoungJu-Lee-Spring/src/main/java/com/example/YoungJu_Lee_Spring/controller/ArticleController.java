@@ -2,6 +2,7 @@ package com.example.YoungJu_Lee_Spring.controller;
 
 import com.example.YoungJu_Lee_Spring.Service.ArticleService;
 import com.example.YoungJu_Lee_Spring.dto.request.ArticleCreateRequestDto;
+import com.example.YoungJu_Lee_Spring.dto.request.ArticleUpdateRequestDto;
 import com.example.YoungJu_Lee_Spring.dto.response.ArticleResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,6 +30,18 @@ public class ArticleController {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.ok(articles);
+    }
+    @PutMapping("/{articleId}")
+    public ResponseEntity<ArticleResponseDto> updateArticle(@PathVariable Long articleId, @RequestBody ArticleUpdateRequestDto requestDto){
+        requestDto.setArticleId(articleId);
+        ArticleResponseDto article = articleService.updateArticle(requestDto);
+        return ResponseEntity.ok(article);
+    }
+
+    @DeleteMapping("/{articleId}")
+    public ResponseEntity<Void> deleteArticle(@PathVariable Long articleId){
+        articleService.deleteArticle(articleId);
+        return ResponseEntity.noContent().build();
     }
     
 }
