@@ -37,7 +37,8 @@ public class CommentService {
         return comment.getId();
     }
 
-    @Transactional
+    // transactional은 create,update,delete와 같이 데이터에 변화가 있을 때 사용.
+    // 단순 read일 때는 사용하지 않아도 무방.
     public List<CommentResponseDto> findCommentsByArticleId(Long articleId){
         List<Comment> comments = commentRepository.findByArticleId(articleId);
         return comments.stream()
@@ -57,6 +58,9 @@ public class CommentService {
 
     @Transactional
     public void deleteComment(Long commentId) {
+        Comment comment = commentRepository.findById(commentId)
+                        .orElseThrow(() -> new EntityNotFoundException("Comment not found with id : " + commentId));
+
         commentRepository.deleteById(commentId);
     }
 }
