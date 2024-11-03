@@ -41,3 +41,20 @@
 
 </div>
 </details>
+
+<details>
+<summary>week4.CRUD-standard</summary>
+<div markdown="1">
+
+### Update 
+
+![스크린샷 2024-10-06 141326](https://github.com/user-attachments/assets/589d6519-c164-46a9-ad84-517ba9a98cc2)
+
+
+### Delete
+
+![스크린샷 2024-10-06 150145](https://github.com/user-attachments/assets/b479c623-1553-4c12-9d4c-476e84f2de33)
+
+
+</div>
+</details>

@@ -1,10 +1,7 @@
 package com.example.YoungJu_Lee_Spring.domain;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import static jakarta.persistence.FetchType.LAZY;
 import static jakarta.persistence.GenerationType.IDENTITY;
@@ -14,6 +11,7 @@ import java.util.ArrayList;
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Article {
     @Id
@@ -40,5 +38,13 @@ public class Article {
         this.content = content;
         this.member = member;
         this.comments = comments != null ? comments : new ArrayList<>();
+    }
+
+    public void updateTitle(String newTitle) {
+        this.title = newTitle;
+    }
+
+    public void updateContent(String newContent) {
+        this.content = newContent;
     }
 }

@@ -6,12 +6,16 @@ import com.example.YoungJu_Lee_Spring.domain.ArticleLog;
 import com.example.YoungJu_Lee_Spring.domain.CategoryArticle;
 import com.example.YoungJu_Lee_Spring.domain.Member;
 import com.example.YoungJu_Lee_Spring.dto.request.ArticleCreateRequestDto;
+import com.example.YoungJu_Lee_Spring.dto.request.ArticleUpdateRequestDto;
 import com.example.YoungJu_Lee_Spring.dto.response.ArticleResponseDto;
 import com.example.YoungJu_Lee_Spring.repository.*;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
+import org.apache.el.stream.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -76,5 +80,55 @@ public class ArticleService {
         return articles.stream()
                 .map(article -> new ArticleResponseDto(article.getId(), article.getTitle(), article.getContent()))
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public ArticleResponseDto updateArticle(ArticleUpdateRequestDto requestDto) {
+        Article article = articleRepository.findById(requestDto.getArticleId())
+                .orElseThrow(() -> new EntityNotFoundException("해당 아이디를 가진 글이 존재하지 않습니다."));
+
+        // 글의 작성자인지 확인
+        if(requestDto.getMemberId().equals(article.getMember().getId())){
+            // article 엔티티 수정
+            article.updateTitle(requestDto.getTitle());  //setter 사용 지양
+            article.updateContent(requestDto.getContent()); //setter 사용 지양
+
+            // category 엔티티 수정
+            // 기존의 categoryArticle 인스턴스 삭제
+            List <CategoryArticle> categoryArticles = categoryArticleRepository.findByArticle(article);
+            categoryArticleRepository.deleteAll(categoryArticles);
+
+            // 인스턴스 다시 생성
+            for(Long categoryId : requestDto.getCategoryIds()) {
+                Category category = categoryRepository.findById(categoryId)
+                        .orElseThrow(() -> new EntityNotFoundException("해당 아이디를 가진 카테고리가 존재하지 않습니다."));
+
+                CategoryArticle categoryArticle = CategoryArticle.builder()
+                        .category(category)
+                        .article(article)
+                        .build();
+
+                categoryArticleRepository.save(categoryArticle);
+            }
+        }
+
+        return new ArticleResponseDto(article.getId(), article.getTitle(), article.getContent());
+    }
+
+    @Transactional
+    public void deleteArticle(Long articleId) {
+        Article article = articleRepository.findById(articleId)
+                .orElseThrow(() -> new EntityNotFoundException("해당 아이디에 해당하는 글이 존재하지 않습니다."));
+
+        List<CategoryArticle> categoryArticles = categoryArticleRepository.findByArticle(article);
+        if(!categoryArticles.isEmpty()) {
+            categoryArticleRepository.deleteAll(categoryArticles);
+        }
+
+        ArticleLog articleLog = articleLogRepository.findByArticle(article)
+                        .orElseThrow(() -> new EntityNotFoundException("해당 글의 로그가 존재하지 않습니다."));
+        articleLogRepository.delete(articleLog);
+
+        articleRepository.delete(article);
     }
 }
