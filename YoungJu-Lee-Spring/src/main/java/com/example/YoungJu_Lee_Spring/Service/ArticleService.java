@@ -90,38 +90,26 @@ public class ArticleService {
         // 글의 작성자인지 확인
         if(requestDto.getMemberId().equals(article.getMember().getId())){
             // article 엔티티 수정
-            if(requestDto.getTitle() != null){
-                article.setTitle(requestDto.getTitle());
-            }
-            if(requestDto.getContent() != null){
-                article.setContent(requestDto.getContent());
-            }
+            article.updateTitle(requestDto.getTitle());  //setter 사용 지양
+            article.updateContent(requestDto.getContent()); //setter 사용 지양
 
             // category 엔티티 수정
-            if(requestDto.getCategoryIds() != null){
-                // 기존의 categoryArticle 인스턴스 삭제
-               List <CategoryArticle> categoryArticles = categoryArticleRepository.findByArticle(article);
-               categoryArticleRepository.deleteAll(categoryArticles);
+            // 기존의 categoryArticle 인스턴스 삭제
+            List <CategoryArticle> categoryArticles = categoryArticleRepository.findByArticle(article);
+            categoryArticleRepository.deleteAll(categoryArticles);
 
-               // 인스턴스 다시 생성
-                for(Long categoryId : requestDto.getCategoryIds()) {
-                    Category category = categoryRepository.findById(categoryId)
-                            .orElseThrow(() -> new EntityNotFoundException("해당 아이디를 가진 카테고리가 존재하지 않습니다."));
-                    
-                    CategoryArticle categoryArticle = CategoryArticle.builder()
-                            .category(category)
-                            .article(article)
-                            .build();
+            // 인스턴스 다시 생성
+            for(Long categoryId : requestDto.getCategoryIds()) {
+                Category category = categoryRepository.findById(categoryId)
+                        .orElseThrow(() -> new EntityNotFoundException("해당 아이디를 가진 카테고리가 존재하지 않습니다."));
 
-                    categoryArticleRepository.save(categoryArticle);
-                            
-                }
+                CategoryArticle categoryArticle = CategoryArticle.builder()
+                        .category(category)
+                        .article(article)
+                        .build();
+
+                categoryArticleRepository.save(categoryArticle);
             }
-
-            // articleLog 엔티티 수정
-            ArticleLog articleLog = articleLogRepository.findByArticle(article)
-                    .orElseThrow(() ->  new EntityNotFoundException("해당 글의 로그가 존재하지 않습니다."));
-            articleLog.setUpdatedAt(LocalDateTime.now());
         }
 
         return new ArticleResponseDto(article.getId(), article.getTitle(), article.getContent());

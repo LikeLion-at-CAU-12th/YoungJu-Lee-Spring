@@ -39,4 +39,12 @@ public class Article {
         this.member = member;
         this.comments = comments != null ? comments : new ArrayList<>();
     }
+
+    public void updateTitle(String newTitle) {
+        this.title = newTitle;
+    }
+
+    public void updateContent(String newContent) {
+        this.content = newContent;
+    }
 }

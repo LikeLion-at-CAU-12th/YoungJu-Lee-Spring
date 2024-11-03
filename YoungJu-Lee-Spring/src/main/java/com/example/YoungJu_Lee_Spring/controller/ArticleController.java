@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import jakarta.validation.Valid;
+
 
 @RestController
 @RequestMapping("/api/v1/articles")
@@ -32,7 +34,7 @@ public class ArticleController {
         return ResponseEntity.ok(articles);
     }
     @PutMapping("/{articleId}")
-    public ResponseEntity<ArticleResponseDto> updateArticle(@PathVariable Long articleId, @RequestBody ArticleUpdateRequestDto requestDto){
+    public ResponseEntity<ArticleResponseDto> updateArticle(@PathVariable Long articleId, @Valid @RequestBody ArticleUpdateRequestDto requestDto){
         requestDto.setArticleId(articleId);
         ArticleResponseDto article = articleService.updateArticle(requestDto);
         return ResponseEntity.ok(article);
