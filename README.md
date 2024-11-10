@@ -43,6 +43,31 @@
 </details>
 
 <details>
+<summary>week4.CRUD-challenge</summary>
+<div markdown="1">
+
+### Comment Create
+![스크린샷 2024-10-06 194427](https://github.com/user-attachments/assets/5ed90494-2fd6-4774-80ba-5a6f0402afd9)
+
+### Comment Read
+
+![스크린샷 2024-10-06 19403](https://github.com/user-attachments/assets/176419e6-8ab2-4c6c-93c9-54e9e16474c2)
+
+
+### Comment Update
+
+![스크린샷 2024-10-06 19542](https://github.com/user-attachments/assets/cf670121-c8c7-4173-9933-5d74035ec7fb)
+
+
+
+### Comment Delete
+
+![스크린샷 2024-10-06 19467](https://github.com/user-attachments/assets/424b85db-cc82-4fdf-81d3-3c131c49663a)
+
+</div>
+</details>
+
+<details>
 <summary>week6.Spring-security</summary>
 <div markdown="1">
   
@@ -64,31 +89,6 @@
 
 ![스크린샷 2024-10-06 150145](https://github.com/user-attachments/assets/b479c623-1553-4c12-9d4c-476e84f2de33)
 
-
-</div>
-</details>
-
-<details>
-<summary>week4.CRUD-challenge</summary>
-<div markdown="1">
-
-### Comment Create
-![스크린샷 2024-10-06 194427](https://github.com/user-attachments/assets/5ed90494-2fd6-4774-80ba-5a6f0402afd9)
-
-### Comment Read
-
-![스크린샷 2024-10-06 19403](https://github.com/user-attachments/assets/176419e6-8ab2-4c6c-93c9-54e9e16474c2)
-
-
-### Comment Update
-
-![스크린샷 2024-10-06 19542](https://github.com/user-attachments/assets/cf670121-c8c7-4173-9933-5d74035ec7fb)
-
-
-
-### Comment Delete
-
-![스크린샷 2024-10-06 19467](https://github.com/user-attachments/assets/424b85db-cc82-4fdf-81d3-3c131c49663a)
 
 </div>
 </details>
