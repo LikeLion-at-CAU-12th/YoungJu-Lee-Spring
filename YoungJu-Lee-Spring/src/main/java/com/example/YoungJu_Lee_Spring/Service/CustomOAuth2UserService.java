@@ -40,7 +40,12 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         // 새로운 사용자는 DB에 저장
         if (member.getId() == null) {
             memberRepository.save(member);
+        } else{
+            // 이미 존재하는 이메일이라면 username 업데이트
+          member.updateUsername(username);
+          memberRepository.save(member);
         }
+
 
         return new DefaultOAuth2User(
                 Collections.singleton(new SimpleGrantedAuthority("ROLE_USER")),

@@ -92,3 +92,16 @@
 
 </div>
 </details>
+
+<details>
+<summary>week7.OAuth-session</summary>
+<div markdown="1">
+
+![스크린샷 2024-11-10 25038](https://github.com/user-attachments/assets/a68e972d-b037-4cbc-ad62-a084052c3cd1)
+
+![스크린샷 2024-11-10 22515](https://github.com/user-attachments/assets/53b0a604-b4eb-45f1-bf38-e7948d1f07e7)
+
+![스크린샷 2024-11-10 25133](https://github.com/user-attachments/assets/c2ab3784-b228-45cd-81fb-716030857aaa)
+
+</div>
+</details>
