@@ -1,20 +1,32 @@
 package com.example.YoungJu_Lee_Spring.controller;
 
 import com.example.YoungJu_Lee_Spring.Service.ArticleService;
+import com.example.YoungJu_Lee_Spring.Service.CommentService;
 import com.example.YoungJu_Lee_Spring.dto.request.ArticleCreateRequestDto;
+import com.example.YoungJu_Lee_Spring.dto.request.ArticleUpdateRequestDto;
+import com.example.YoungJu_Lee_Spring.dto.request.CommentCreateRequestDto;
+import com.example.YoungJu_Lee_Spring.dto.request.CommentUpdateRequestDto;
 import com.example.YoungJu_Lee_Spring.dto.response.ArticleResponseDto;
+import com.example.YoungJu_Lee_Spring.dto.response.CommentResponseDto;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import jakarta.validation.Valid;
+
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/v1/articles")
 public class ArticleController {
-    @Autowired
-    private ArticleService articleService;
+
+    // autowired 사용 지양
+    // 결합도를 낮추고 순환참조 방지를 하고 불변성 보장가능
+    private final ArticleService articleService;
+    private final CommentService commentService;
     
     @PostMapping("")
     // 프론트에게 이러한 BODY로 넣어달라는 뜻
@@ -29,6 +41,48 @@ public class ArticleController {
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.ok(articles);
+    }
+    @PutMapping("/{articleId}")
+    public ResponseEntity<ArticleResponseDto> updateArticle(@PathVariable Long articleId, @Valid @RequestBody ArticleUpdateRequestDto requestDto){
+        requestDto.setArticleId(articleId);
+        ArticleResponseDto article = articleService.updateArticle(requestDto);
+        return ResponseEntity.ok(article);
+    }
+
+    @DeleteMapping("/{articleId}")
+    public ResponseEntity<Void> deleteArticle(@PathVariable Long articleId){
+        articleService.deleteArticle(articleId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/{articleId}/comments")
+    public ResponseEntity<Long> createComment(@PathVariable Long articleId, @RequestBody CommentCreateRequestDto requestDto){
+        requestDto.setArticleId(articleId);
+        Long commentId = commentService.createComment(requestDto);
+        return new ResponseEntity<>(commentId, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{articleId}/comments")
+    public ResponseEntity<List<CommentResponseDto>> getCommentsByArticleId(@PathVariable Long articleId){
+        List<CommentResponseDto> comments = commentService.findCommentsByArticleId(articleId);
+        return ResponseEntity.ok(comments);
+    }
+
+    @PutMapping("/{articleId}/comments/{commentId}")
+    public ResponseEntity<CommentResponseDto> updateComment(
+            @PathVariable Long articleId,
+            @PathVariable Long commentId,
+            @RequestBody CommentUpdateRequestDto requestDto){
+        requestDto.setArticleId(articleId);
+        requestDto.setCommentId(commentId);
+        CommentResponseDto comment = commentService.updateComment(requestDto);
+        return ResponseEntity.ok(comment);
+    }
+
+    @DeleteMapping("/{articleId}/comments/{commentId}")
+    public ResponseEntity<Void> deleteComment(@PathVariable Long articleId, @PathVariable Long commentId){
+        commentService.deleteComment(commentId);
+        return ResponseEntity.noContent().build();
     }
     
 }
