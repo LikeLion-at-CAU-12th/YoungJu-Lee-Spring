@@ -1,5 +1,6 @@
 package com.example.YoungJu_Lee_Spring.config;
 
+import com.example.YoungJu_Lee_Spring.Service.CustomOAuth2UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,16 +23,33 @@ import java.util.Collections;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
+
+    private final CustomUserDetailsService customUserDetailsService;
+    private final CustomOAuth2UserService customOAuth2UserService;
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.cors((SecurityConfig::corsAllow))
-            .csrf(AbstractHttpConfigurer::disable)  //일단 실습에서는 disable 처리
+        http
+                .cors((SecurityConfig::corsAllow)) // (corsConfig) -> Security.corsAllow(corsConfig)
+
+                .csrf(AbstractHttpConfigurer::disable)
+
                 .authorizeHttpRequests((auth) -> auth
-                        .requestMatchers("/join", "/login").permitAll()   //위에서부터 탐색
+                        .requestMatchers("/join", "/login").permitAll()
                         .requestMatchers("/api/**").authenticated())
+
                 .formLogin(Customizer.withDefaults())
-                .logout(Customizer.withDefaults())
-                .userDetailsService(customUserDetailsService);
+                .oauth2Login(oauth -> oauth
+                        .userInfoEndpoint(userInfo -> userInfo
+                                .userService(customOAuth2UserService)
+                        )
+                        .defaultSuccessUrl("/login", true)
+                )
+
+                .userDetailsService(customUserDetailsService)
+
+                .logout(Customizer.withDefaults());
+
         return http.build();
     }
 
@@ -51,6 +69,4 @@ public class SecurityConfig {
             return configuration;
         });
     }
-
-    private final CustomUserDetailsService customUserDetailsService; // UserDetailsService DI
 }
