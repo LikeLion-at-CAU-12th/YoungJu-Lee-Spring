@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5bda756f-0fbc-4345-ad76-d5678c73f16f" name="Changes" comment="" />
+    <list default="true" id="5bda756f-0fbc-4345-ad76-d5678c73f16f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YoungJu-Lee-Spring/src/main/java/com/example/YoungJu_Lee_Spring/Service/CustomOAuth2UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/YoungJu-Lee-Spring/src/main/java/com/example/YoungJu_Lee_Spring/Service/CustomOAuth2UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YoungJu-Lee-Spring/src/main/java/com/example/YoungJu_Lee_Spring/Service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/YoungJu-Lee-Spring/src/main/java/com/example/YoungJu_Lee_Spring/Service/MemberService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YoungJu-Lee-Spring/src/main/java/com/example/YoungJu_Lee_Spring/domain/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/YoungJu-Lee-Spring/src/main/java/com/example/YoungJu_Lee_Spring/domain/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/YoungJu-Lee-Spring/src/main/java/com/example/YoungJu_Lee_Spring/dto/request/JoinRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/YoungJu-Lee-Spring/src/main/java/com/example/YoungJu_Lee_Spring/dto/request/JoinRequest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,13 +35,20 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2oelIFf5ZbSu5PhWXy4zgT55yao" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -48,7 +63,7 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "Spring Boot.YoungJuLeeSpringApplication.executor": "Run",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "oauth-session",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/a0108/OneDrive/바탕 화면/YoungJu-Lee-Spring",
     "node.js.detected.package.eslint": "true",
@@ -88,7 +103,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1731237844548</updated>
-      <workItem from="1731237845066" duration="2446000" />
+      <workItem from="1731237845066" duration="7032000" />
+      <workItem from="1731245111351" duration="2249000" />
     </task>
     <servers />
   </component>

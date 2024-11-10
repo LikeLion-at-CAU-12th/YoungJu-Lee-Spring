@@ -31,7 +31,7 @@ public class Member extends BaseTimeEntity {
     private String password;
     private Long age;
 
-    //@Column(nullable = false, unique = true)
+    @Column(nullable = true)
     private String email;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
@@ -39,4 +39,8 @@ public class Member extends BaseTimeEntity {
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Like> likes = new ArrayList<>();
+
+    public void updateUsername(String username) {
+        this.username = username;
+    }
 }
