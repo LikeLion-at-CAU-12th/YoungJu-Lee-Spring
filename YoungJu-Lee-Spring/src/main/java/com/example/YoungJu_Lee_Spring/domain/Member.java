@@ -27,12 +27,11 @@ public class Member extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_id")
     private Long id;
-
+    private String username;
+    private String password;
     private Long age;
 
-    private String name;
-
-    @Column(nullable = false, unique = true)
+    //@Column(nullable = false, unique = true)
     private String email;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)

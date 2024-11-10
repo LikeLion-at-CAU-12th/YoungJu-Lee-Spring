@@ -1,6 +1,26 @@
-spring:
-# 3
+#spring:
+#  profiles:
+#    include: SECRET-KEY
+#
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://${database-host}:3306/${database-name}
+#    username: ${database-username}
+#    password: ${database-password}
+#
+#  jpa:
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: create
+#    properties:
+#      hibernate:
+#        format_sql: true
+#        dialect: org.hibernate.dialect.MySQLDialect
+#
+#  logging.level:
+#    org.hibernate.SQL: debug
 
+spring:
   datasource:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:tcp://localhost/~/oauth
@@ -11,7 +31,7 @@ spring:
     console:
       enabled: true
       path: /h2-console
-
+   
   jpa:
     show-sql: true
     hibernate:
@@ -20,10 +40,10 @@ spring:
       hibernate:
         format_sql: true
     generate-ddl: true
-
+    
   logging.level:
     org.hibernate.SQL: debug
-
+    
   sql:
     init:
       mode: always

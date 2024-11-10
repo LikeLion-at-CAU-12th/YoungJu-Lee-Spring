@@ -43,6 +43,15 @@
 </details>
 
 <details>
+<summary>week6.Spring-security</summary>
+<div markdown="1">
+  
+### Join & Login
+  
+![스크린샷 2024-11-04 003645](https://github.com/user-attachments/assets/068f7615-54a1-4036-843a-d544e0b38fb9)
+
+![스크린샷 2024-11-04 00355](https://github.com/user-attachments/assets/259865ec-5faf-41bd-8c23-085a790ed12c)
+=======
 <summary>week4.CRUD-standard</summary>
 <div markdown="1">
 
@@ -80,7 +89,6 @@
 ### Comment Delete
 
 ![스크린샷 2024-10-06 19467](https://github.com/user-attachments/assets/424b85db-cc82-4fdf-81d3-3c131c49663a)
-
 
 </div>
 </details>
