@@ -19,6 +19,35 @@
 </details>
 
 <details>
+<summary>week2.JPA-challenge</summary>
+<div markdown="1">
+ 
+ ### Member Test
+
+  ![스크린샷 2024-09-15 175143](https://github.com/user-attachments/assets/1e41e414-0290-46dd-8472-0e03f11fecb5)
+
+<br>
+
+ ### Song Test
+ 
+ ![스크린샷 2024-09-15 234703](https://github.com/user-attachments/assets/43b5ad0c-9570-4345-91af-d601b4d87fe3)
+
+ <br>
+
+ ### PlayList Test
+
+ ![스크린샷 2024-09-15 230558](https://github.com/user-attachments/assets/a78a5978-84f3-446c-8c04-3bb14f13fd73)
+
+<br>
+
+### PlayListSong Test
+
+![스크린샷 2024-09-15 230546](https://github.com/user-attachments/assets/470d4e9d-5b70-4f6f-9379-c5fffb8e3196)
+
+</div>
+</details>
+
+<details>
 <summary>week3.Spring-data-JPA-session</summary>
 <div markdown="1">
 
@@ -38,6 +67,24 @@
 ### findByUsernameStartsWith 
 
 ![스크린샷 2024-09-28 22172](https://github.com/user-attachments/assets/71065de2-8a57-492e-99c8-8649318f54ed)
+
+</div>
+</details>
+
+
+<details>
+<summary>week4.CRUD-standard</summary>
+<div markdown="1">
+
+### Update 
+
+![스크린샷 2024-10-06 141326](https://github.com/user-attachments/assets/589d6519-c164-46a9-ad84-517ba9a98cc2)
+
+
+### Delete
+
+![스크린샷 2024-10-06 150145](https://github.com/user-attachments/assets/b479c623-1553-4c12-9d4c-476e84f2de33)
+
 
 </div>
 </details>
