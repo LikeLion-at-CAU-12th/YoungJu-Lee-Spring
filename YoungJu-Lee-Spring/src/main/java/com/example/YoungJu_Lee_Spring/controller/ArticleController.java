@@ -42,6 +42,15 @@ public class ArticleController {
         }
         return ResponseEntity.ok(articles);
     }
+
+//    @GetMapping("/member/{memberId}")
+//    public List<Article> getArticles(){
+//        String username = PrincipalHandler.getUsernameFromPrincipal();
+//        Member byUsername = memberJpaRepository.findByUsername(username);
+//        return articleService.findArticlesByMemberId(byUsername.getId());
+//    }
+
+
     @PutMapping("/{articleId}")
     public ResponseEntity<ArticleResponseDto> updateArticle(@PathVariable Long articleId, @Valid @RequestBody ArticleUpdateRequestDto requestDto){
         requestDto.setArticleId(articleId);

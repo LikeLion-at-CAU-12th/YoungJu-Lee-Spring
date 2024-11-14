@@ -32,4 +32,18 @@ public class MemberService {
 
       memberJpaRepository.save(member);
     }
+
+    public Member login(JoinRequest joinRequest) {
+        Member member = memberJpaRepository.findByUsername(joinRequest.getUsername());
+
+        if (member == null) {
+            return null;
+        }
+
+        if (!bCryptPasswordEncoder.matches(joinRequest.getPassword(), member.getPassword())) {
+            return null;
+        }
+
+        return member;
+    }
 }
